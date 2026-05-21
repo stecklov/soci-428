@@ -1,0 +1,70 @@
+---
+title: "Week 1 Exercise: Introduction to R and Quarto"
+author: "Your Name"
+date: today
+format: html
+---
+
+## Overview
+
+This exercise introduces basic R operations and the Quarto workflow.
+Complete each section and render the document when finished.
+
+---
+
+## Part 1: Basic Calculations
+
+R can be used as a calculator. Run the code below and check the output.
+
+```{r}
+# Population of Canada (approximate, 2024)
+canada_pop <- 40_000_000
+
+# Annual growth rate (percent)
+growth_rate <- 0.9
+
+# Project population 10 years forward
+projected <- canada_pop * (1 + growth_rate / 100)^10
+projected
+```
+
+**Question:** What does the `^` operator do? Try changing the growth rate and re-render.
+
+---
+
+## Part 2: Vectors
+
+```{r}
+# Fertility rates (children per woman) for selected countries
+country <- c("Niger", "Mali", "Chad", "Canada", "Japan", "South Korea")
+tfr      <- c(6.8,    5.9,    5.6,    1.5,      1.2,     0.7)
+
+# Which countries are below replacement (TFR < 2.1)?
+country[tfr < 2.1]
+```
+
+**Question:** Add one more country and its TFR to each vector. Re-render.
+
+---
+
+## Part 3: A Simple Plot
+
+```{r}
+# Bar chart of TFRs
+barplot(
+  tfr,
+  names.arg = country,
+  col       = "steelblue",
+  las       = 2,          # rotate x-axis labels
+  ylab      = "Total Fertility Rate",
+  main      = "Fertility Rates by Country"
+)
+abline(h = 2.1, lty = 2, col = "red")  # replacement-level line
+```
+
+---
+
+## Submission
+
+Render this document to HTML (click **Render** or run `quarto::quarto_render("exercise01.qmd")`),
+then upload the `.html` file to Canvas.
