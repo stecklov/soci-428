@@ -3,10 +3,10 @@
     "build": {"dockerfile": "Dockerfile"},
     "forwardPorts": [8787],
     "portsAttributes": {"8787": {"label": "RStudio", "onAutoForward": "openBrowser", "visibility": "public"}},
-    "containerEnv": {"DISABLE_AUTH": "true", "ROOT": "TRUE"},
+    "containerEnv": {"ROOT": "TRUE"},
     "features": {"ghcr.io/rocker-org/devcontainer-features/quarto-cli:1": {}},
     "postCreateCommand": "bash .devcontainer/setup.sh",
-    "postStartCommand": "bash /rocker_scripts/init_userconf.sh && rserver --server-daemonize=1",
+    "postStartCommand": "rserver --server-daemonize=1 --www-address=0.0.0.0",
     "remoteUser": "root",
     "customizations": {"codespaces": {"openFiles": ["README.md"]}}
   }    

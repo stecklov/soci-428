@@ -13,3 +13,5 @@ ln -sf /workspaces/soci-428 /home/rstudio/soci-428
 Rscript -e "install.packages('quarto', repos='https://cloud.r-project.org')"
 
 echo "Setup complete. RStudio available on port 8787."
+echo "rstudio:rstudio" | chpasswd
+echo "rstudio:rstudio" | chpasswd
