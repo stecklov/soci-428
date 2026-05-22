@@ -7,13 +7,14 @@
     "ghcr.io/rocker-org/devcontainer-features/quarto-cli:1": {}
   },
   "postCreateCommand": "bash .devcontainer/setup.sh",
-  "postAttachCommand": {
-    "rstudio": "rserver --www-port=8787 &",
-    "port-public": "sleep 5 && gh codespace ports visibility 8787:public -c $CODESPACE_NAME"
-  },
+  "postAttachCommand": "rserver --www-port=8787 &",
   "forwardPorts": [8787],
   "portsAttributes": {
-    "8787": {"label": "RStudio", "onAutoForward": "openBrowser"}
+    "8787": {
+      "label": "RStudio",
+      "onAutoForward": "openBrowser",
+      "visibility": "public"
+    }
   },
   "customizations": {
     "codespaces": {"openFiles": ["README.md"]}
