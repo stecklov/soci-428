@@ -1,25 +1,12 @@
 {
-  "name": "SOCI-428",
-  "image": "rocker/rstudio:4.4",
-  "forwardPorts": [8787],
-  "portsAttributes": {
-    "8787": {
-      "label": "RStudio",
-      "onAutoForward": "openBrowser"
-    }
-  },
-  "containerEnv": {
-    "DISABLE_AUTH": "true",
-    "ROOT": "TRUE"
-  },
-  "features": {
-    "ghcr.io/rocker-org/devcontainer-features/quarto-cli:1": {}
-  },
-  "postCreateCommand": "bash .devcontainer/setup.sh",
-  "remoteUser": "rstudio",
-  "customizations": {
-    "codespaces": {
-      "openFiles": ["README.md"]
-    }
-  }
-}
+    "name": "SOCI-428",
+    "build": {"dockerfile": "Dockerfile"},
+    "forwardPorts": [8787],
+    "portsAttributes": {"8787": {"label": "RStudio", "onAutoForward": "openBrowser", "visibility": "public"}},
+    "containerEnv": {"DISABLE_AUTH": "true", "ROOT": "TRUE"},
+    "features": {"ghcr.io/rocker-org/devcontainer-features/quarto-cli:1": {}},
+    "postCreateCommand": "bash .devcontainer/setup.sh",
+    "postStartCommand": "bash /rocker_scripts/init_userconf.sh && rserver --server-daemonize=1",
+    "remoteUser": "root",
+    "customizations": {"codespaces": {"openFiles": ["README.md"]}}
+  }    
